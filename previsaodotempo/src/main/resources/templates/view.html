@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name = "viewport" content = "width = device-width"/>
+	<title>Previsão do Tempo - Cidades</title>
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Previsão do Tempo</h1>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Cidade</th>
+						<th>Dia da Semana</th>
+						<th>Temperatura Mínima</th>
+						<th>Temperatura Máxima</th>
+						<th>Umidade Relativa do Ar</th>
+						<th>Descrição</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="previsao : ${previsoes}">
+						<td th:text="${previsao.cidade}"></td>
+						<td th:text="${previsao.diaSemana}"></td>
+						<td th:text="${previsao.tempMin}"></td>
+						<td th:text="${previsao.tempMax}"></td>
+						<td th:text="${previsao.umidade}"></td>
+						<td th:text="${previsao.texto}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<form class="form-inline" method="post" th:object="${previsao}" th:action="@{/previsaoadd}" style="margin: 20px 0">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Cidade" th:field="*{cidade}" />
+					<input type="text" class="form-control" placeholder="Dia da semana" th:field="*{diaSemana}" />
+					<input type="text" class="form-control" placeholder="Temperatura Mínima" th:field="*{tempMin}" />
+					<input type="text" class="form-control" placeholder="Temperatura Máxima" th:field="*{tempMax}" />
+					<input type="text" class="form-control" placeholder="Umidade Relativa do Ar" th:field="*{umidade}" />
+					<input type="text" class="form-control" placeholder="Descrição" th:field="*{texto}" />
+					<button type="submit" class="btn btn-primary">Adicionar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

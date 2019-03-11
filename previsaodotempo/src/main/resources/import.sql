@@ -1,0 +1,1 @@
+insert into previsao (id, cidade, dia_semana, temp_max, temp_min, umidade, texto) values (1, 'São Paulo', 'Segunda Feira', '26.1', '22.0', '75%', 'Tempo umido, provavel chuva');
