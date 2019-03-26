@@ -9,23 +9,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.usjt.previsaodotempo.model.Previsao;
-import br.usjt.previsaodotempo.repository.PrevisaodotempoApplicationRepository;
+import br.usjt.previsaodotempo.service.PrevisaodotempoApplicationService;
 @Controller
 public class PrevisaodotempoApplicationController {
+	/*@Autowired
+	private PrevisaodotempoApplicationRepository prevRepo;*/
 	@Autowired
-	private PrevisaodotempoApplicationRepository prevRepo;
+	private PrevisaodotempoApplicationService previsaoService;
 	
 	@GetMapping("/previsao")
 	public ModelAndView listaPrevisao() {
 		ModelAndView mv = new ModelAndView("view");
-		List<Previsao> previsoes = prevRepo.findAll();
+		mv.addObject(new Previsao());
+		List<Previsao> previsoes = previsaoService.listarTodos();
 		mv.addObject("previsoes", previsoes);
-		mv.addObject("previsao",new Previsao());
 		return mv;
 	}
 	@PostMapping("/previsaoadd")
 	public String salvar(Previsao previsao) {
-		prevRepo.save(previsao);
+		previsaoService.salvar(previsao);
 		return "redirect:/previsao";
 	}
 }

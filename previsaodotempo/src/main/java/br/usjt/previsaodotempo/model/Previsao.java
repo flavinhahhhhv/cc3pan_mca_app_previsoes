@@ -17,10 +17,13 @@ public class Previsao implements Serializable{
 	private Long id;
 	private String cidade;
 	private String diaSemana;
+	private String dataHora;
 	private String tempMax;
 	private String tempMin;
 	private String umidade;
 	private String texto;
+	private String latitude;
+	private String longitude;
 	
 	public Long getId() {
 		return id;
@@ -40,6 +43,13 @@ public class Previsao implements Serializable{
 	}
 	public void setDiaSemana(String diaSemana) {
 		this.diaSemana = diaSemana;
+	}
+	public String getDataHora() {
+		return dataHora;
+	}
+
+	public void setDataHora(String dataHora) {
+		this.dataHora = dataHora;
 	}
 	public String getTempMax() {
 		return tempMax;
@@ -64,5 +74,20 @@ public class Previsao implements Serializable{
 	}
 	public void setTexto(String texto) {
 		this.texto = texto;
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 }

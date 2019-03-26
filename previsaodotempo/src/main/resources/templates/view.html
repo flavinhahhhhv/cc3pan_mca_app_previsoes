@@ -20,20 +20,26 @@
 					<tr>
 						<th>Cidade</th>
 						<th>Dia da Semana</th>
+						<th>Data/Hora</th>
 						<th>Temperatura Mínima</th>
 						<th>Temperatura Máxima</th>
 						<th>Umidade Relativa do Ar</th>
 						<th>Descrição</th>
+						<th>Latitude</th>
+						<th>Longitude</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="previsao : ${previsoes}">
 						<td th:text="${previsao.cidade}"></td>
 						<td th:text="${previsao.diaSemana}"></td>
+						<td th:text="${previsao.dataHora}"></td>
 						<td th:text="${previsao.tempMin}"></td>
 						<td th:text="${previsao.tempMax}"></td>
 						<td th:text="${previsao.umidade}"></td>
 						<td th:text="${previsao.texto}"></td>
+						<td th:text="${previsao.latitude}"></td>
+						<td th:text="${previsao.longitude}"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -41,10 +47,13 @@
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Cidade" th:field="*{cidade}" />
 					<input type="text" class="form-control" placeholder="Dia da semana" th:field="*{diaSemana}" />
+					<input type="text" class="form-control" placeholder="Data/Hora" th:field="*{dataHora}" />
 					<input type="text" class="form-control" placeholder="Temperatura Mínima" th:field="*{tempMin}" />
 					<input type="text" class="form-control" placeholder="Temperatura Máxima" th:field="*{tempMax}" />
 					<input type="text" class="form-control" placeholder="Umidade Relativa do Ar" th:field="*{umidade}" />
 					<input type="text" class="form-control" placeholder="Descrição" th:field="*{texto}" />
+					<input type="text" class="form-control" placeholder="Latitude" th:field="*{latitude}" />
+					<input type="text" class="form-control" placeholder="Longitude" th:field="*{longitude}" />
 					<button type="submit" class="btn btn-primary">Adicionar</button>
 				</div>
 			</form>
