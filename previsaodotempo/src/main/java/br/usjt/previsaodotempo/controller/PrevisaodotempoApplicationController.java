@@ -20,9 +20,9 @@ public class PrevisaodotempoApplicationController {
 	@GetMapping("/previsao")
 	public ModelAndView listaPrevisao() {
 		ModelAndView mv = new ModelAndView("view");
-		mv.addObject(new Previsao());
 		List<Previsao> previsoes = previsaoService.listarTodos();
 		mv.addObject("previsoes", previsoes);
+		mv.addObject(new Previsao());
 		return mv;
 	}
 	@PostMapping("/previsaoadd")

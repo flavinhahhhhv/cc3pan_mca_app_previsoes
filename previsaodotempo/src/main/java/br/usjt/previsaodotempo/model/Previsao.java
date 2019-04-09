@@ -2,10 +2,13 @@ package br.usjt.previsaodotempo.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Previsao implements Serializable{
@@ -16,7 +19,6 @@ public class Previsao implements Serializable{
 
 	private Long id;
 	private String cidade;
-	private String diaSemana;
 	private String dataHora;
 	private String tempMax;
 	private String tempMin;
@@ -25,10 +27,14 @@ public class Previsao implements Serializable{
 	private String latitude;
 	private String longitude;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(unique=true, name="id_dia")
+	private DiaSemana diaSemana;
+	
+
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -37,12 +43,6 @@ public class Previsao implements Serializable{
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
-	}
-	public String getDiaSemana() {
-		return diaSemana;
-	}
-	public void setDiaSemana(String diaSemana) {
-		this.diaSemana = diaSemana;
 	}
 	public String getDataHora() {
 		return dataHora;
@@ -89,5 +89,11 @@ public class Previsao implements Serializable{
 
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
+	}
+	public DiaSemana getDiaSemana() {
+		return diaSemana;
+	}
+	public void setDiaSemana(DiaSemana diaSemana) {
+		this.diaSemana = diaSemana;
 	}
 }
