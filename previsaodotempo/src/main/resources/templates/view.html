@@ -31,8 +31,8 @@
 				</thead>
 				<tbody>
 					<tr th:each="previsao : ${previsoes}">
-						<td th:text="${previsao.cidade}"></td>
-						<td th:text="${previsao.diaSemana}"></td>
+						<td th:text="${previsao.nome}"></td>
+						<td th:text="${previsao.nomeDia}"></td>
 						<td th:text="${previsao.dataHora}"></td>
 						<td th:text="${previsao.tempMin}"></td>
 						<td th:text="${previsao.tempMax}"></td>
@@ -45,8 +45,8 @@
 			</table>
 			<form class="form-inline" method="post" th:object="${previsao}" th:action="@{/previsaoadd}" style="margin: 20px 0">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Cidade" th:field="*{cidade}" />
-					<input type="text" class="form-control" placeholder="Dia da semana" th:field="*{diaSemana}" />
+					<input type="text" class="form-control" placeholder="Cidade" th:field="*{nome}" />
+					<input type="text" class="form-control" placeholder="Dia da semana" th:field="*{nomeDia}" />
 					<input type="text" class="form-control" placeholder="Data/Hora" th:field="*{dataHora}" />
 					<input type="text" class="form-control" placeholder="Temperatura Mínima" th:field="*{tempMin}" />
 					<input type="text" class="form-control" placeholder="Temperatura Máxima" th:field="*{tempMax}" />
